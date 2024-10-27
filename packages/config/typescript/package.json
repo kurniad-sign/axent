@@ -5,6 +5,7 @@
   "license": "MIT",
   "files": [
     "base.json",
+    "next.json",
     "react-library.json"
   ]
 }
