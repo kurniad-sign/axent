@@ -1,25 +1,47 @@
-import fixedForwardRef, { DistributiveOmit } from "../utils/fixed-forward-ref";
-
-type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'div';
-
-type Distributive<TAs extends HeadingTag> = DistributiveOmit<
-  React.ComponentPropsWithRef<HeadingTag extends TAs ? 'div' : TAs>,
-  'component'
->;
-
-export type HeadingProps<TAs extends HeadingTag> = {
-  component?: TAs;
-} & Distributive<TAs>
+import { useMemo } from "react";
+import fixedForwardRef from "../utils/fixed-forward-ref";
+import { mergeTwClass } from "../utils/merge-tw-class";
+import { headingVariant } from "./twClasses";
+import { HeadingProps, HeadingTag } from "./types";
 
 const UnwrappedHeading = <TAs extends HeadingTag>(
   props: HeadingProps<TAs>,
   ref: React.ForwardedRef<any>
 ) => {
-  const { component: Component='div', children, ...restProps } = props
+  const {
+    component: Component = 'div',
+    className,
+    children,
+    align,
+    variant,
+    weight,
+    ...rest
+  } = props;
+
+  const resolvedVariant = useMemo(() => {
+    const componentToVariantMap: Record<HeadingTag, typeof variant> = {
+      h1: 'title-1',
+      h2: 'title-2',
+      h3: 'title-3',
+      h4: 'title-4',
+      h5: 'title-5',
+      div: 'title-6',
+    };
+
+    return variant ?? componentToVariantMap[Component];
+  }, [Component, variant]);
 
   return (
-    <Component className="text-3xl" ref={ref} {...restProps}>{children}</Component>
-  )
-}
+    <Component
+      ref={ref}
+      className={mergeTwClass(
+        headingVariant({ className, variant: resolvedVariant, align, weight })
+      )}
+      {...rest}
+    >
+      {children}
+    </Component>
+  );
+};
 
 export const Heading = fixedForwardRef(UnwrappedHeading)

@@ -1,8 +1,9 @@
 {
 "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "types": ["node"]
 },
 "exclude": ["node_modules", "dist"],
 "extends": "config-typescript/react-library.json",
-"include": ["src", "tsup.config.ts"]
+"include": ["src"]
 }
