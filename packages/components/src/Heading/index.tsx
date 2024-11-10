@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 
-import { headingVariant } from "../core/components";
+import { headingVariant } from "~/core/components";
 
-import fixedForwardRef from "../utils/fixed-forward-ref";
-import { mergeTwClass } from "../utils/merge-tw-class";
+import fixedForwardRef from "~/utils/fixed-forward-ref";
+import { mergeTwClass } from "~/utils/merge-tw-class";
 
 import { HeadingProps, HeadingTag } from "./types";
 
