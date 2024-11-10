@@ -1,7 +1,10 @@
 import { useMemo } from "react";
+
+import { headingVariant } from "../core/components";
+
 import fixedForwardRef from "../utils/fixed-forward-ref";
 import { mergeTwClass } from "../utils/merge-tw-class";
-import { headingVariant } from "./twClasses";
+
 import { HeadingProps, HeadingTag } from "./types";
 
 const UnwrappedHeading = <TAs extends HeadingTag>(

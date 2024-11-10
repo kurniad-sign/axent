@@ -1,7 +1,7 @@
 import { tv } from 'tailwind-variants';
 
 export const headingVariant = tv({
-  base: 'font-nohemi scroll-m-20 tracking-tight',
+  base: 'scroll-m-20 tracking-tight',
   variants: {
     variant: {
       ['display-1']: 'text-display-1 tracking-tighter leading-none',

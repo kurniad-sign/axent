@@ -1,6 +1,6 @@
 import { VariantProps } from "tailwind-variants";
+import { HeadingVariantProps } from "../core/components";
 import { DistributiveOmit } from "../utils/fixed-forward-ref";
-import { HeadingVariantProps } from "./twClasses";
 
 export type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'div';
 
